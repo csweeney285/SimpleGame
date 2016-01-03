@@ -97,7 +97,15 @@
 -(void) initAnimation
 {
     self.ballPush = [[UIPushBehavior alloc]initWithItems:@[self.myBall] mode:UIPushBehaviorModeInstantaneous];
-    self.ballPush.pushDirection = CGVectorMake(1, 1);
+    int x = arc4random_uniform(6) - 3;
+    int w = arc4random_uniform(10);
+    int z = arc4random_uniform(10);
+    int y = arc4random_uniform(6) - 3;
+    
+    float i = x - (w * 0.1);
+    float j = y - (z * 0.1);
+    
+    self.ballPush.pushDirection = CGVectorMake(i,j);
     self.ballPush.magnitude = .2;
     [self.animator addBehavior:self.ballPush];
     
@@ -119,21 +127,21 @@
     UIDynamicItemBehavior *border1Behavior = [[UIDynamicItemBehavior alloc]initWithItems:@[self.border1]];
     border1Behavior.friction = 0.0000;
     border1Behavior.density = 100000000000;
-    border1Behavior.elasticity = 1.0;
+    border1Behavior.elasticity = 1.02;
     border1Behavior.resistance = 0;
     border1Behavior.anchored = YES;
     
     UIDynamicItemBehavior *border2Behavior = [[UIDynamicItemBehavior alloc]initWithItems:@[self.border2]];
     border2Behavior.friction = 0.0000;
     border2Behavior.density = 100000000000;
-    border2Behavior.elasticity = 1.0;
+    border2Behavior.elasticity = 1.02;
     border2Behavior.resistance = 0;
     border2Behavior.anchored = YES;
     
     UIDynamicItemBehavior *border3Behavior = [[UIDynamicItemBehavior alloc]initWithItems:@[self.border3]];
     border3Behavior.friction = 0.0000;
     border3Behavior.density = 100000000000;
-    border3Behavior.elasticity = 1.0;
+    border3Behavior.elasticity = 1.02;
     border3Behavior.resistance = 0;
     border3Behavior.anchored = YES;
     
@@ -161,16 +169,16 @@
 
 -(void)createBorder{
     self.border1  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, self.view.frame.size.height)];
-    self.border1.backgroundColor = [UIColor blueColor];
+    self.border1.backgroundColor = [UIColor greenColor];
     
     self.border2 =[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width -1, 0, 1, self.view.frame.size.height)];
-    self.border2.backgroundColor = [UIColor blueColor];
+    self.border2.backgroundColor = [UIColor greenColor];
     
     self.border3 = [[UIView alloc]initWithFrame:CGRectMake(1,0,self.view.frame.size.width-1,1)];
-    self.border3.backgroundColor = [UIColor blueColor];
+    self.border3.backgroundColor = [UIColor greenColor];
     
     self.border4 = [[UIView alloc]initWithFrame:CGRectMake(1, self.view.frame.size.height-1, self.view.frame.size.width -1, 1)];
-    self.border4.backgroundColor = [UIColor blueColor];
+    self.border4.backgroundColor = [UIColor greenColor];
     
     [self.view addSubview:self.border1];
     [self.view addSubview:self.border2];
